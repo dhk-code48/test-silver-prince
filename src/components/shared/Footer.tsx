@@ -26,6 +26,33 @@ export default function Footer() {
     }
   }, [path]);
 
+  useEffect(() => {
+    // Load SDK if not already loaded
+    if (!document.getElementById("facebook-jssdk")) {
+      const fbRoot = document.createElement("div");
+      fbRoot.id = "fb-root";
+      document.body.appendChild(fbRoot);
+
+      const script = document.createElement("script");
+      script.id = "facebook-jssdk";
+      script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
+      script.async = true;
+      script.defer = true;
+      script.crossOrigin = "anonymous";
+      script.onload = () => {
+        if (window.FB) {
+          window.FB.XFBML.parse(); // Force re-parse
+        }
+      };
+      document.body.appendChild(script);
+    } else {
+      // Already loaded, just re-parse
+      if (window.FB) {
+        window.FB.XFBML.parse();
+      }
+    }
+  }, []);
+
   if (!shouldRender) return null;
 
   return (
@@ -98,13 +125,23 @@ export default function Footer() {
 
           {/* Search and Login */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-primary text-lg">Search</h3>
-            <div className="flex items-center">
-              <Input type="text" placeholder="Search..." className="bg-secondary rounded-r-none focus-visible:ring-0" />
-              <Button onClick={() => router.push("/novel")} variant="default" size="icon" className="rounded-l-none">
-                <Search className="w-4 h-4" />
-                <span className="sr-only">Search</span>
-              </Button>
+            <div
+              className="mx-auto fb-page"
+              data-href="https://www.facebook.com/people/The-Silver-Prince/61576248986232/"
+              data-tabs="timeline"
+              data-width="340"
+              data-height="200"
+              data-small-header="false"
+              data-adapt-container-width="true"
+              data-hide-cover="false"
+              data-show-facepile="true"
+            >
+              <blockquote
+                cite="https://www.facebook.com/people/The-Silver-Prince/61576248986232/"
+                className="fb-xfbml-parse-ignore"
+              >
+                <a href="https://www.facebook.com/people/The-Silver-Prince/61576248986232/">The Silver Prince</a>
+              </blockquote>
             </div>
             <div className="pt-2">
               {isLoggedIn ? (

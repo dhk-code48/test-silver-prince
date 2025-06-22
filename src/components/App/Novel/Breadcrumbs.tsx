@@ -11,24 +11,13 @@ const Breadcrumbs: FC<bcProps> = ({ id, title, chapter, volume }) => {
   return (
     <div className="flex flex-wrap items-center gap-1 md:gap-2 p-3 md:p-5 lg:px-0 text-muted-foreground">
       {!chapter && (
-        <Link
-          href={"/" + id}
-          className={
-            chapter
-              ? "text-sm lg:text-base text-muted-foreground "
-              : "text-foreground "
-          }
-        >
+        <Link href={"/"} className={chapter ? "text-sm lg:text-base text-muted-foreground " : "text-foreground "}>
           Home {" / "}
         </Link>
       )}
       <Link
         href={"/novel/" + id}
-        className={
-          chapter
-            ? "text-sm lg:text-base text-muted-foreground "
-            : "text-foreground "
-        }
+        className={chapter ? "text-sm lg:text-base text-muted-foreground " : "text-foreground "}
       >
         {title}
       </Link>
@@ -42,10 +31,7 @@ const Breadcrumbs: FC<bcProps> = ({ id, title, chapter, volume }) => {
       {chapter && (
         <>
           <span>/</span>
-          <p className="text-foreground text-sm lg:text-base">
-            {" "}
-            {chapter}
-          </p>{" "}
+          <p className="text-foreground text-sm lg:text-base"> {chapter}</p>{" "}
         </>
       )}
     </div>
