@@ -77,7 +77,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       console.error("Error fetching user info:", error);
       return null;
     }
-  }, []);
+  }, [user]);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user);

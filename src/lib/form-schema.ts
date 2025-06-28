@@ -67,6 +67,7 @@ export const BlogFormSchema = z.object({
   ogImage: z.string().url({
     message: "Please provide a og image URL",
   }),
+  ogImageAlt: z.string().optional(),
 
   draft: z.boolean().default(false).optional(),
   featured: z.boolean().default(false).optional(),

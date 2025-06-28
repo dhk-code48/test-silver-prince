@@ -21,13 +21,7 @@ interface NovelReaderProps {
   chapterIndex: number;
 }
 
-export function NovelReader({
-  novelId,
-  volumes,
-  volumeIndex,
-  novelTitle,
-  chapterIndex,
-}: NovelReaderProps) {
+export function NovelReader({ novelId, volumes, volumeIndex, novelTitle, chapterIndex }: NovelReaderProps) {
   const [chapIndex, setChapIndex] = useState<number>(chapterIndex);
   const [volIndex, setVolIndex] = useState<number>(volumeIndex);
   const [showTOC, setShowTOC] = useState(false);
@@ -49,8 +43,7 @@ export function NovelReader({
     setTheme,
   } = useReaderSettings(novelId, volIndex, chapIndex);
 
-  const { progress, contentRef, showScrollToTop, scrollToTop } =
-    useReaderProgress();
+  const { progress, contentRef, showScrollToTop, scrollToTop } = useReaderProgress();
 
   useEffect(() => {
     setChapIndex(chapterIndex);
@@ -95,8 +88,7 @@ export function NovelReader({
 
   const isPrevDisabled = chapIndex === 0 && volIndex === 0;
   const isNextDisabled =
-    volIndex === volumes.length - 1 &&
-    chapIndex === volumes[volumes.length - 1].tabeleOfContents.length - 1;
+    volIndex === volumes.length - 1 && chapIndex === volumes[volumes.length - 1].tabeleOfContents.length - 1;
 
   const shareChapter = () => {
     if (navigator.share) {
@@ -119,14 +111,12 @@ export function NovelReader({
     <div className="space-y-10 bg-background min-h-screen">
       {/* Reading progress bar */}
       <div className="top-0 right-0 left-0 z-[5000] fixed bg-background/10 h-1">
-        <div
-          className="bg-primary h-full transition-all duration-300 ease-out"
-          style={{ width: `${progress}%` }}
-        />
+        <div className="bg-primary h-full transition-all duration-300 ease-out" style={{ width: `${progress}%` }} />
       </div>
 
       <ReaderHeader
         novelTitle={novelTitle}
+        novelId={novelId}
         chapterTitle={chapter?.title || "Loading..."}
         isBookmarked={isBookmarked}
         toggleBookmark={toggleBookmark}

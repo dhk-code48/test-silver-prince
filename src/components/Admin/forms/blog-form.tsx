@@ -224,6 +224,18 @@ export function BlogForm(props: BlogFormProps) {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="ogImageAlt"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input placeholder="Enter SEO Image Alt Text" type={"text"} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </FormSection>
           </FormSection>
 

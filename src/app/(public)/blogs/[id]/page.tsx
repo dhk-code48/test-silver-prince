@@ -10,21 +10,16 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 // Generate metadata for SEO
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   const props = await params;
   const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 
   // Fetch blog data from Firestore
   try {
-    const blogSnapshot = await fetch(`${url}/api/blog/${props.id}`).then(
-      (res) => {
-        if (!res.ok) throw new Error("Failed to fetch blog");
-        return res.json();
-      }
-    );
+    const blogSnapshot = await fetch(`${url}/api/blog/${props.id}`).then((res) => {
+      if (!res.ok) throw new Error("Failed to fetch blog");
+      return res.json();
+    });
 
     const blog = blogSnapshot.data as SilverPrinceBlog;
 
@@ -47,7 +42,7 @@ export async function generateMetadata(
             url: blog.ogImage || blog.banner,
             width: 1200,
             height: 630,
-            alt: blog.title,
+            alt: blog.ogImageAlt || blog.title,
           },
         ],
         type: "article",
@@ -56,7 +51,7 @@ export async function generateMetadata(
         card: "summary_large_image",
         title: blog.seoTitle || blog.title,
         description: blog.seoDescription || blog.description,
-        images: [blog.ogImage || blog.banner],
+        images: [{ url: blog.ogImage || blog.banner, alt: blog.ogImageAlt || blog.title }],
       },
     };
   } catch (error) {

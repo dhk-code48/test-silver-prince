@@ -15,12 +15,9 @@ type BlogContentProps = {
 };
 
 export default function BlogContent({ id }: BlogContentProps) {
-  const { data, isLoading, isError, error } = useDocumentQuery(
-    doc(collection(db, "Blogs"), id),
-    {
-      queryKey: ["blogs", id],
-    }
-  );
+  const { data, isLoading, isError, error } = useDocumentQuery(doc(collection(db, "Blogs"), id), {
+    queryKey: ["blogs", id],
+  });
 
   console.log(" === FETCHING FROM FIRESTORE DATABASE === ");
 
@@ -39,10 +36,7 @@ export default function BlogContent({ id }: BlogContentProps) {
         <Alert variant="destructive">
           <AlertCircle className="w-4 h-4" />
           <AlertTitle>Error</AlertTitle>
-          <AlertDescription>
-            {error?.message ||
-              "Failed to load blog post. Please try again later."}
-          </AlertDescription>
+          <AlertDescription>{error?.message || "Failed to load blog post. Please try again later."}</AlertDescription>
         </Alert>
       </div>
     );
@@ -54,9 +48,7 @@ export default function BlogContent({ id }: BlogContentProps) {
         <Alert>
           <AlertCircle className="w-4 h-4" />
           <AlertTitle>Draft Post</AlertTitle>
-          <AlertDescription>
-            This post is currently in draft mode and not published yet.
-          </AlertDescription>
+          <AlertDescription>This post is currently in draft mode and not published yet.</AlertDescription>
         </Alert>
       </div>
     );
@@ -68,13 +60,7 @@ export default function BlogContent({ id }: BlogContentProps) {
 
       {/* Banner Image */}
       <div className="relative my-8 rounded-lg w-full h-[400px] overflow-hidden">
-        <Image
-          src={blog.banner || "/placeholder.svg"}
-          alt={blog.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src={blog.banner || "/placeholder.svg"} alt={blog.title} fill className="object-cover" priority />
       </div>
 
       {/* Blog Content */}

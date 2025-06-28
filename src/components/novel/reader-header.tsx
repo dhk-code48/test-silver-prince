@@ -1,21 +1,8 @@
 "use client";
 
-import {
-  BookOpen,
-  List,
-  Menu,
-  MessageSquare,
-  Share2,
-  Bookmark,
-  BookmarkCheck,
-} from "lucide-react";
+import { BookOpen, List, Menu, MessageSquare, Share2, Bookmark, BookmarkCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ReaderSettingsDropdown } from "@/components/novel/reader-settings-dropdown";
 import Link from "next/link";
 
@@ -41,6 +28,7 @@ interface ReaderHeaderProps {
   setFontFamily: (family: string) => void;
   setTextAlignment: (alignment: string) => void;
   setTheme: (theme: string) => void;
+  novelId: string;
 }
 
 export function ReaderHeader({
@@ -50,6 +38,7 @@ export function ReaderHeader({
   toggleBookmark,
   shareChapter,
   setShowTOC,
+  novelId,
   showTOC,
   setShowComments,
   showComments,
@@ -77,38 +66,22 @@ export function ReaderHeader({
         </div>
 
         {/* Mobile menu button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden mr-2"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
+        <Button variant="ghost" size="icon" className="md:hidden mr-2" onClick={() => setIsMobileMenuOpen(true)}>
           <Menu className="w-5 h-5" />
           <span className="sr-only">Toggle menu</span>
         </Button>
 
         {/* Breadcrumb navigation */}
         <nav className="flex-1 items-center space-x-1 px-4 md:px-0 overflow-x-auto whitespace-nowrap">
-          <Link
-            href="/"
-            className="font-medium text-muted-foreground hover:text-foreground text-sm"
-          >
+          <Link href="/" className="font-medium text-muted-foreground hover:text-foreground text-sm">
             Home
           </Link>
           <span className="text-muted-foreground">/</span>
-          <Link
-            href="/novel"
-            className="font-medium text-muted-foreground hover:text-foreground text-sm"
-          >
+          <Link href="/novel" className="font-medium text-muted-foreground hover:text-foreground text-sm">
             Novels
           </Link>
           <span className="text-muted-foreground">/</span>
-          <Link
-            href={`/novel/${encodeURIComponent(
-              novelTitle.toLowerCase().replace(/\s+/g, "-")
-            )}`}
-            className="font-medium text-muted-foreground hover:text-foreground text-sm"
-          >
+          <Link href={`/novel/${novelId}`} className="font-medium text-muted-foreground hover:text-foreground text-sm">
             {novelTitle}
           </Link>
           <span className="text-muted-foreground">/</span>
@@ -120,37 +93,19 @@ export function ReaderHeader({
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleBookmark}
-                  className="hidden md:flex"
-                >
-                  {isBookmarked ? (
-                    <BookmarkCheck className="w-5 h-5 text-primary" />
-                  ) : (
-                    <Bookmark className="w-5 h-5" />
-                  )}
-                  <span className="sr-only">
-                    {isBookmarked ? "Remove bookmark" : "Bookmark"}
-                  </span>
+                <Button variant="ghost" size="icon" onClick={toggleBookmark} className="hidden md:flex">
+                  {isBookmarked ? <BookmarkCheck className="w-5 h-5 text-primary" /> : <Bookmark className="w-5 h-5" />}
+                  <span className="sr-only">{isBookmarked ? "Remove bookmark" : "Bookmark"}</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>
-                {isBookmarked ? "Remove bookmark" : "Bookmark this chapter"}
-              </TooltipContent>
+              <TooltipContent>{isBookmarked ? "Remove bookmark" : "Bookmark this chapter"}</TooltipContent>
             </Tooltip>
           </TooltipProvider>
 
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={shareChapter}
-                  className="hidden md:flex"
-                >
+                <Button variant="ghost" size="icon" onClick={shareChapter} className="hidden md:flex">
                   <Share2 className="w-5 h-5" />
                   <span className="sr-only">Share</span>
                 </Button>
@@ -160,23 +115,13 @@ export function ReaderHeader({
           </TooltipProvider>
 
           {/* Table of Contents Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:flex"
-            onClick={() => setShowTOC(true)}
-          >
+          <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setShowTOC(true)}>
             <List className="w-5 h-5" />
             <span className="sr-only">Table of Contents</span>
           </Button>
 
           {/* Comments Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden md:flex"
-            onClick={() => setShowComments(true)}
-          >
+          <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setShowComments(true)}>
             <MessageSquare className="w-5 h-5" />
             <span className="sr-only">Comments</span>
           </Button>

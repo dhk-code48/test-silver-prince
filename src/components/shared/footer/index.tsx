@@ -1,23 +1,20 @@
 "use client";
+
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Facebook, Instagram, Twitter, Linkedin, Search, Github } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import Image from "next/image";
-import { FaDiscord, FaFacebook, FaInstagram, FaPatreon, FaTumblr, FaX, FaXTwitter } from "react-icons/fa6";
-import MaxWidthWrapper from "./max-width-wrapper";
+import { FaDiscord, FaFacebook, FaInstagram, FaPatreon, FaXTwitter } from "react-icons/fa6";
+
 import { socialMedia } from "@/lib/constants";
 import { useEffect, useState } from "react";
-import UserAvatar from "./user-avatar";
+import MaxWidthWrapper from "../max-width-wrapper";
+import FacebookPagePreview from "./facebook-page-preview";
 
 export default function Footer() {
   const { isLoggedIn, isLoading, user } = useAuth();
   const path = usePathname();
   const router = useRouter();
   const currentYear = new Date().getFullYear();
-
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
@@ -25,33 +22,6 @@ export default function Footer() {
       setShouldRender(true);
     }
   }, [path]);
-
-  useEffect(() => {
-    // Load SDK if not already loaded
-    if (!document.getElementById("facebook-jssdk")) {
-      const fbRoot = document.createElement("div");
-      fbRoot.id = "fb-root";
-      document.body.appendChild(fbRoot);
-
-      const script = document.createElement("script");
-      script.id = "facebook-jssdk";
-      script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
-      script.async = true;
-      script.defer = true;
-      script.crossOrigin = "anonymous";
-      script.onload = () => {
-        if (window.FB) {
-          window.FB.XFBML.parse(); // Force re-parse
-        }
-      };
-      document.body.appendChild(script);
-    } else {
-      // Already loaded, just re-parse
-      if (window.FB) {
-        window.FB.XFBML.parse();
-      }
-    }
-  }, []);
 
   if (!shouldRender) return null;
 
@@ -123,40 +93,10 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Search and Login */}
+          {/* Facebook Page Preview */}
           <div className="space-y-4">
-            <div
-              className="mx-auto fb-page"
-              data-href="https://www.facebook.com/people/The-Silver-Prince/61576248986232/"
-              data-tabs="timeline"
-              data-width="340"
-              data-height="200"
-              data-small-header="false"
-              data-adapt-container-width="true"
-              data-hide-cover="false"
-              data-show-facepile="true"
-            >
-              <blockquote
-                cite="https://www.facebook.com/people/The-Silver-Prince/61576248986232/"
-                className="fb-xfbml-parse-ignore"
-              >
-                <a href="https://www.facebook.com/people/The-Silver-Prince/61576248986232/">The Silver Prince</a>
-              </blockquote>
-            </div>
-            <div className="pt-2">
-              {isLoggedIn ? (
-                <>
-                  <p>User Profile</p>
-                  <Link href={"/novel"}>
-                    <UserAvatar displayName={user?.displayName} photoURL={user?.photoURL} />
-                  </Link>
-                </>
-              ) : (
-                <Button isLoading={isLoading} asChild>
-                  <Link href={"/auth/signin"}>Login</Link>
-                </Button>
-              )}
-            </div>
+            <h3 className="font-semibold text-lg">Follow Us on Facebook</h3>
+            <FacebookPagePreview />
           </div>
         </div>
       </MaxWidthWrapper>

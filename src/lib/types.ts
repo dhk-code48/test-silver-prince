@@ -17,6 +17,7 @@ export type BlogSEO = {
   seoTitle: string;
   seoDescription: string;
   ogImage: string;
+  ogImageAlt?: string;
 };
 
 export interface BlogType extends BlogSEO {

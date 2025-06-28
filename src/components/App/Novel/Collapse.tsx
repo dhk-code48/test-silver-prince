@@ -4,11 +4,7 @@ import * as React from "react";
 import { LuChevronDown } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { chapterProps } from "@/firebase/Read/getChapters";
 import { AiOutlineLoading } from "react-icons/ai";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
@@ -25,13 +21,7 @@ interface pageProps {
   index: number;
 }
 
-const Collapse: React.FC<pageProps> = ({
-  title,
-  novelId,
-  chapterIndex,
-  volume,
-  index,
-}) => {
+const Collapse: React.FC<pageProps> = ({ title, novelId, chapterIndex, volume, index }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   // React.useEffect(() => {
@@ -64,11 +54,7 @@ const Collapse: React.FC<pageProps> = ({
   // }, [isOpen]);
 
   return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="space-y-2 my-5"
-    >
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-2 my-5">
       <CollapsibleTrigger asChild>
         <div className="flex justify-between items-center space-x-4 hover:bg-slate-200 dark:hover:bg-slate-800 px-3 lg:px-10 py-2 border rounded-lg">
           <h4 className="font-semibold text-xl">
@@ -86,14 +72,11 @@ const Collapse: React.FC<pageProps> = ({
           volume.tabeleOfContents.map((chapter, cI) => {
             return (
               <Link
-                href={
-                  "/novel/" + novelId + "/?chapter=[" + index + "," + cI + "]"
-                }
+                href={"/novel/" + novelId + "/?chapter=[" + index + "," + cI + "]"}
                 key={cI + chapter.id}
                 className="hover:bg-slate-200 dark:hover:bg-slate-800 ml-5 px-2 lg:px-5 py-3 border-b rounded-md text-lg cursor-pointer"
               >
-                Chapter {index === 0 ? cI : cI + chapterIndex + 1}:{" "}
-                {chapter.title}
+                Chapter {index === 0 ? cI : cI + chapterIndex + 1}: {chapter.title}
                 {/* <p className="text-muted-foreground text-sm">
                   {moment(chapter.publishedOn?.toDate()).fromNow()}
                 </p> */}
