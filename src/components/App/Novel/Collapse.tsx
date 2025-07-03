@@ -74,6 +74,7 @@ const Collapse: React.FC<pageProps> = ({ title, novelId, chapterIndex, volume, i
               <Link
                 href={"/novel/" + novelId + "/?chapter=[" + index + "," + cI + "]"}
                 key={cI + chapter.id}
+                target="_blank"
                 className="hover:bg-slate-200 dark:hover:bg-slate-800 ml-5 px-2 lg:px-5 py-3 border-b rounded-md text-lg cursor-pointer"
               >
                 Chapter {index === 0 ? cI : cI + chapterIndex + 1}: {chapter.title}
