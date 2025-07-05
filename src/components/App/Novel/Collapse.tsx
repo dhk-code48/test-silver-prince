@@ -72,6 +72,16 @@ const Collapse: React.FC<pageProps> = ({ title, novelId, chapterIndex, volume, i
           volume.tabeleOfContents.map((chapter, cI) => {
             return (
               <Link
+                onClick={() =>
+                  setTimeout(
+                    () =>
+                      window.scrollTo({
+                        behavior: "smooth",
+                        top: 0,
+                      }),
+                    2000
+                  )
+                }
                 href={"/novel/" + novelId + "/?chapter=[" + index + "," + cI + "]"}
                 key={cI + chapter.id}
                 className="hover:bg-slate-200 dark:hover:bg-slate-800 ml-5 px-2 lg:px-5 py-3 border-b rounded-md text-lg cursor-pointer"
