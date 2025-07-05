@@ -73,14 +73,10 @@ const Collapse: React.FC<pageProps> = ({ title, novelId, chapterIndex, volume, i
             return (
               <Link
                 onClick={() =>
-                  setTimeout(
-                    () =>
-                      window.scrollTo({
-                        behavior: "smooth",
-                        top: 0,
-                      }),
-                    2000
-                  )
+                  window.scrollTo({
+                    behavior: "smooth",
+                    top: 0,
+                  })
                 }
                 href={"/novel/" + novelId + "/?chapter=[" + index + "," + cI + "]"}
                 key={cI + chapter.id}

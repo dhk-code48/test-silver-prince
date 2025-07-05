@@ -2,23 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import {
-  ArrowUpDown,
-  Edit,
-  ExternalLink,
-  MoreHorizontal,
-  Trash,
-} from "lucide-react";
+import { ArrowUpDown, Edit, ExternalLink, MoreHorizontal, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -69,7 +56,7 @@ export function BlogCard({ blog, onRefetch }: BlogCardProps) {
 
   const handleOpenModal = () => {
     openModal(
-      <Modal title="Edit Blog" size="5xl">
+      <Modal title="Edit Blog" size="5xl" preventCloseOnOutsideClick>
         <BlogForm
           values={blog}
           onSuccess={() => {
@@ -119,11 +106,7 @@ export function BlogCard({ blog, onRefetch }: BlogCardProps) {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link
-                    href={"/blogs/" + blog.id}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <Link href={"/blogs/" + blog.id} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="mr-2 w-4 h-4" />
                     View Blog
                   </Link>
@@ -143,9 +126,7 @@ export function BlogCard({ blog, onRefetch }: BlogCardProps) {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <CardDescription className="truncate">
-            {blog.description}
-          </CardDescription>
+          <CardDescription className="truncate">{blog.description}</CardDescription>
         </CardHeader>
         <CardContent className="pb-2">
           <div className="flex items-center text-muted-foreground">
@@ -153,12 +134,7 @@ export function BlogCard({ blog, onRefetch }: BlogCardProps) {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between pt-2">
-          <Button
-            variant="outline"
-            className="cursor-pointer"
-            size="sm"
-            onClick={handleOpenModal}
-          >
+          <Button variant="outline" className="cursor-pointer" size="sm" onClick={handleOpenModal}>
             <Edit className="mr-2 w-4 h-4" />
             Edit
           </Button>
@@ -179,8 +155,7 @@ export function BlogCard({ blog, onRefetch }: BlogCardProps) {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently delete the blog &quot;{blog.title}&quot;.
-              This action cannot be undone.
+              This will permanently delete the blog &quot;{blog.title}&quot;. This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

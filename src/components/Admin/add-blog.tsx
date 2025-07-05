@@ -12,7 +12,7 @@ const AddBlog = ({ afterSubmit }: { afterSubmit: () => void }) => {
 
   const handleOpenModal = () => {
     openModal(
-      <Modal title="Add New Blog" size="5xl">
+      <Modal title="Add New Blog" size="5xl" preventCloseOnOutsideClick={true}>
         <BlogForm
           onSuccess={() => {
             closeModal();

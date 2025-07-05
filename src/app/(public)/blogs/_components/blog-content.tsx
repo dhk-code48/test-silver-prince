@@ -62,10 +62,11 @@ export default function BlogContent({ id }: BlogContentProps) {
       <div className="relative my-8 rounded-lg w-full h-[400px] overflow-hidden">
         <Image src={blog.banner || "/placeholder.svg"} alt={blog.title} fill className="object-cover" priority />
       </div>
-
       {/* Blog Content */}
-      <div
-        className="dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-primary prose prose-lg"
+
+      <p
+        className="dark:prose-invert mx-auto pb-20 font-body text-justify chapter"
+        style={{ fontSize: "18px", lineHeight: "30px" }}
         dangerouslySetInnerHTML={{ __html: blog.content }}
       />
     </article>

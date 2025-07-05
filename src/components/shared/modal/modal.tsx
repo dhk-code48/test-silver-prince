@@ -69,9 +69,7 @@ export function Modal({
     if (focusableElements.length === 0) return;
 
     const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[
-      focusableElements.length - 1
-    ] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
 
     const handleTabKey = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
@@ -133,7 +131,7 @@ export function Modal({
         )}
       >
         {(title || showCloseButton) && (
-          <div className="flex justify-between items-center p-4 border-b">
+          <div className="top-0 left-0 z-50 sticky flex justify-between items-center bg-background p-4 border-b">
             {title && <h2 className="font-semibold text-xl">{title}</h2>}
             {showCloseButton && (
               <Button
@@ -148,14 +146,7 @@ export function Modal({
             )}
           </div>
         )}
-        <div
-          className={cn(
-            "p-4",
-            size === "full" && "overflow-auto max-h-[calc(90vh-4rem)]"
-          )}
-        >
-          {children}
-        </div>
+        <div className={cn("p-4", size === "full" && "overflow-auto max-h-[calc(90vh-4rem)]")}>{children}</div>
       </div>
     </div>,
     document.body
