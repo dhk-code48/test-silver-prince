@@ -29,14 +29,7 @@ import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { socialMedia } from "@/lib/constants";
-import {
-  FaDiscord,
-  FaFacebook,
-  FaInstagram,
-  FaPatreon,
-  FaTwitter,
-  FaXTwitter,
-} from "react-icons/fa6";
+import { FaDiscord, FaFacebook, FaInstagram, FaPatreon, FaTwitter, FaXTwitter } from "react-icons/fa6";
 
 const container = {
   hidden: { opacity: 0 },
@@ -121,8 +114,7 @@ export default function AboutPage() {
     {
       year: 2023,
       title: "Website Launch",
-      description:
-        "Launched TheSilverPrince.com as the official home for all novels",
+      description: "Launched TheSilverPrince.com as the official home for all novels",
     },
   ];
 
@@ -177,7 +169,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-primary rounded-lg rotate-3 transform"></div>
                 <div className="relative shadow-xl border-4 border-white rounded-lg overflow-hidden">
                   <Image
-                    src="/banner.jpg"
+                    src="/profile.jpg"
                     alt="Rahul Manandhar - The Silver Prince"
                     width={400}
                     height={500}
@@ -195,57 +187,33 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            <motion.div
-              className="md:w-1/2"
-              variants={container}
-              initial="hidden"
-              animate="show"
-            >
+            <motion.div className="md:w-1/2" variants={container} initial="hidden" animate="show">
               <motion.div variants={item}>
                 <Badge className="bg-primary/20 hover:bg-primary/30 mb-4 px-3 py-1 text-primary text-sm cursor-pointer">
                   Author & Creator
                 </Badge>
               </motion.div>
-              <motion.h1
-                variants={item}
-                className="mb-4 font-bold text-foreground text-4xl md:text-5xl"
-              >
+              <motion.h1 variants={item} className="mb-4 font-bold text-foreground text-4xl md:text-5xl">
                 The Silver Prince
               </motion.h1>
-              <motion.p
-                variants={item}
-                className="mb-6 text-muted-foreground text-xl"
-              >
-                Crafting immersive fantasy worlds and reimagining familiar
-                universes
+              <motion.p variants={item} className="mb-6 text-muted-foreground text-xl">
+                Crafting immersive fantasy worlds and reimagining familiar universes
               </motion.p>
-              <motion.div
-                variants={item}
-                className="flex items-center gap-2 mb-3 text-muted-foreground"
-              >
+              <motion.div variants={item} className="flex items-center gap-2 mb-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary" />
                 <span>Based in Nepal</span>
               </motion.div>
-              <motion.div
-                variants={item}
-                className="flex items-center gap-2 mb-3 text-muted-foreground"
-              >
+              <motion.div variants={item} className="flex items-center gap-2 mb-3 text-muted-foreground">
                 <Calendar className="w-5 h-5 text-primary" />
                 <span>Writing since 2019</span>
               </motion.div>
-              <motion.div
-                variants={item}
-                className="flex items-center gap-2 mb-6 text-muted-foreground"
-              >
+              <motion.div variants={item} className="flex items-center gap-2 mb-6 text-muted-foreground">
                 <BookMarked className="w-5 h-5 text-primary" />
                 <span>Author of &quot;Pokemon: A Real Story&quot;</span>
               </motion.div>
               <motion.div variants={item} className="flex flex-wrap gap-3">
                 <Button asChild variant="outline">
-                  <Link
-                    href="https://www.patreon.com/TheSilverPrince1"
-                    target="_blank"
-                  >
+                  <Link href="https://www.patreon.com/TheSilverPrince1" target="_blank">
                     <Patreon className="mr-2 w-4 h-4" />
                     Support on Patreon
                   </Link>
@@ -258,11 +226,7 @@ export default function AboutPage() {
 
       {/* Tabs Section */}
       <div className="bg-card py-10 rounded-lg">
-        <Tabs
-          defaultValue="about"
-          className="w-full"
-          onValueChange={setActiveTab}
-        >
+        <Tabs defaultValue="about" className="w-full" onValueChange={setActiveTab}>
           <div className="flex justify-center mb-8">
             <TabsList className="grid grid-cols-2 w-full max-w-4xl">
               <TabsTrigger value="about">About Me</TabsTrigger>
@@ -282,58 +246,46 @@ export default function AboutPage() {
                 <div>
                   <h2 className="mb-4 font-bold text-2xl">Who I Am</h2>
                   <p className="mb-4 text-muted-foreground">
-                    I&apos;m Rahul Manandhar, writing under the pen name
-                    &quot;The Silver Prince.&quot; Born and raised in Nepal,
-                    I&apos;ve been passionate about storytelling since
-                    childhood. My journey as a writer officially began in 2019
-                    when I started publishing my fan fiction novel
-                    &quot;Pokemon: A Real Story.&quot;
+                    I&apos;m Rahul Manandhar, writing under the pen name &quot;The Silver Prince.&quot; Born and raised
+                    in Nepal, I&apos;ve been passionate about storytelling since childhood. My journey as a writer
+                    officially began in 2019 when I started publishing my fan fiction novel &quot;Pokemon: A Real
+                    Story.&quot;
                   </p>
                   <p className="mb-4 text-muted-foreground">
-                    As a fiction novelist, I focus on fantasy and adventure,
-                    blending familiar elements with my own imagination to create
-                    unique reading experiences. I love exploring the deeper
-                    aspects of familiar worlds and adding layers of complexity
-                    that make readers think.
+                    As a fiction novelist, I focus on fantasy and adventure, blending familiar elements with my own
+                    imagination to create unique reading experiences. I love exploring the deeper aspects of familiar
+                    worlds and adding layers of complexity that make readers think.
                   </p>
                   <p className="text-muted-foreground">
-                    When I&apos;m not writing, I enjoy playing video games,
-                    reading other fantasy novels, and exploring the beautiful
-                    landscapes of Nepal. These experiences often find their way
-                    into my writing, enriching the worlds I create.
+                    When I&apos;m not writing, I enjoy playing video games, reading other fantasy novels, and exploring
+                    the beautiful landscapes of Nepal. These experiences often find their way into my writing, enriching
+                    the worlds I create.
                   </p>
                 </div>
 
                 <div>
-                  <h2 className="mb-4 font-bold text-2xl">
-                    My Writing Philosophy
-                  </h2>
+                  <h2 className="mb-4 font-bold text-2xl">My Writing Philosophy</h2>
                   <p className="mb-4 text-muted-foreground">
-                    I believe stories should be both entertaining and
-                    thought-provoking. In my writing, I aim to create immersive
-                    worlds that readers can get lost in, while also exploring
-                    themes that resonate on a deeper level.
+                    I believe stories should be both entertaining and thought-provoking. In my writing, I aim to create
+                    immersive worlds that readers can get lost in, while also exploring themes that resonate on a deeper
+                    level.
                   </p>
                   <p className="mb-4 text-muted-foreground">
-                    My approach to fan fiction is to honor the original material
-                    while adding my own perspective. With &quot;Pokemon: A Real
-                    Story,&quot; I wanted to explore a more realistic take on
-                    the Pokemon universe, examining the implications of a world
-                    where such powerful creatures exist alongside humans.
+                    My approach to fan fiction is to honor the original material while adding my own perspective. With
+                    &quot;Pokemon: A Real Story,&quot; I wanted to explore a more realistic take on the Pokemon
+                    universe, examining the implications of a world where such powerful creatures exist alongside
+                    humans.
                   </p>
                   <p className="text-muted-foreground">
-                    I&apos;m dedicated to improving the reader&apos;s experience
-                    with every chapter I write. Your support means everything to
-                    me, and I reinvest it directly into creating better content
-                    and more stories for you to enjoy.
+                    I&apos;m dedicated to improving the reader&apos;s experience with every chapter I write. Your
+                    support means everything to me, and I reinvest it directly into creating better content and more
+                    stories for you to enjoy.
                   </p>
                 </div>
               </div>
 
               <div className="mt-12">
-                <h2 className="mb-6 font-bold text-2xl text-center">
-                  Connect With Me
-                </h2>
+                <h2 className="mb-6 font-bold text-2xl text-center">Connect With Me</h2>
                 <div className="flex justify-center gap-6">
                   <motion.a
                     href={socialMedia.FACEBOOK}
@@ -398,9 +350,7 @@ export default function AboutPage() {
               animate={activeTab === "faq" ? "show" : "hidden"}
               variants={fadeIn}
             >
-              <h2 className="mb-12 font-bold text-3xl text-center">
-                Frequently Asked Questions
-              </h2>
+              <h2 className="mb-12 font-bold text-3xl text-center">Frequently Asked Questions</h2>
 
               <div className="space-y-6">
                 {faqs.map((faq, index) => (
