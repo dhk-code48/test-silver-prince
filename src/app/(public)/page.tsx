@@ -1,5 +1,6 @@
 "use client";
 import AppSlider from "@/components/App/AppSlider";
+import LandingBlogs from "@/components/landing/landing-blogs";
 
 import LandingNews from "@/components/landing/landing-news";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
@@ -19,7 +20,9 @@ export default function Home() {
         <div className="z-10 relative">
           <div className="flex flex-col items-center mx-auto mb-12 max-w-4xl text-center">
             <div className="relative font-display font-bold">
-              <h2 className="mb-4 text-5xl md:text-7xl tracking-wide animate-float">Freedom</h2>
+              <h2 className="mb-4 text-5xl md:text-7xl tracking-wide animate-float">
+                Freedom
+              </h2>
               <h2 className="mb-8 text-5xl md:text-7xl tracking-wide animate-float animation-delay-300">
                 From <span className="text-primary italic">Reality</span>
               </h2>
@@ -27,14 +30,18 @@ export default function Home() {
               <div className="-right-8 -bottom-8 absolute bg-primary/30 rounded-full w-16 h-16 animate-pulse animation-delay-700"></div>
             </div>
             <p className="z-5 max-w-2xl text-muted-foreground text-xl animate-fade-in animation-delay-500">
-              Dive into captivating worlds crafted by passionate writers. Escape reality and embark on extraordinary
-              adventures.
+              Dive into captivating worlds crafted by passionate writers. Escape
+              reality and embark on extraordinary adventures.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-8 animate-fade-in animation-delay-700">
               <Button asChild className="hover:scale-105 transition-transform">
                 <Link href="/novel/pokemon-a-real-story">Start Reading</Link>
               </Button>
-              <Button asChild variant="outline" className="hover:scale-105 transition-transform">
+              <Button
+                asChild
+                variant="outline"
+                className="hover:scale-105 transition-transform"
+              >
                 <Link href="/about">About the Author</Link>
               </Button>
             </div>
@@ -43,27 +50,36 @@ export default function Home() {
                 <div className="flex justify-center items-center bg-primary/30 mx-auto mb-4 rounded-full w-12 h-12">
                   <BookOpen className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="mb-2 font-bold text-lg text-center">Immersive Story</h3>
+                <h3 className="mb-2 font-bold text-lg text-center">
+                  Immersive Story
+                </h3>
                 <p className="text-muted-foreground text-sm text-center">
-                  Experience a realistic take on the Pokemon universe unlike anything you&apos;ve read before.
+                  Experience a realistic take on the Pokemon universe unlike
+                  anything you&apos;ve read before.
                 </p>
               </div>
               <div className="bg-card shadow-md hover:shadow-lg p-6 border border-border rounded-lg transition-all hover:-translate-y-1">
                 <div className="flex justify-center items-center bg-primary/20 mx-auto mb-4 rounded-full w-12 h-12">
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="mb-2 font-bold text-lg text-center">Regular Updates</h3>
+                <h3 className="mb-2 font-bold text-lg text-center">
+                  Regular Updates
+                </h3>
                 <p className="text-muted-foreground text-sm text-center">
-                  New chapters released frequently to keep you engaged in the evolving story.
+                  New chapters released frequently to keep you engaged in the
+                  evolving story.
                 </p>
               </div>
               <div className="bg-card shadow-md hover:shadow-lg p-6 border border-border rounded-lg transition-all hover:-translate-y-1">
                 <div className="flex justify-center items-center bg-primary/20 mx-auto mb-4 rounded-full w-12 h-12">
                   <Users className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="mb-2 font-bold text-lg text-center">Community</h3>
+                <h3 className="mb-2 font-bold text-lg text-center">
+                  Community
+                </h3>
                 <p className="text-muted-foreground text-sm text-center">
-                  Join discussions with other readers and share your thoughts on the latest chapters.
+                  Join discussions with other readers and share your thoughts on
+                  the latest chapters.
                 </p>
               </div>
             </div>
@@ -74,6 +90,8 @@ export default function Home() {
       {/* <FeaturedNovel /> */}
 
       <LandingNews />
+
+      <LandingBlogs />
     </MaxWidthWrapper>
   );
 }
